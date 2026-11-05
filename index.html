@@ -2,7 +2,6 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<!-- viewport-fit=cover — корректные отступы под «чёлку» и жест-полоску iPhone -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#F6F1E8">
 <meta name="format-detection" content="telephone=no">
@@ -16,7 +15,6 @@
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 
 <style>
-/* ============ ПАЛИТРА И БАЗА ============ */
 :root{
   --bg:#F6F1E8; --bg-2:#EFE7D8; --paper:#FBF8F1;
   --ink:#3B342A; --ink-soft:#7C7264;
@@ -84,7 +82,6 @@ section{padding:clamp(4.5rem,10vw,8rem) 0;position:relative}
   *{animation-duration:.01ms !important}
 }
 
-/* ============ ПРЕЛОАДЕР ============ */
 #preloader{
   position:fixed;inset:0;z-index:100;background:var(--bg);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;
@@ -100,7 +97,6 @@ section{padding:clamp(4.5rem,10vw,8rem) 0;position:relative}
   letter-spacing:.4em;color:var(--ink-soft);opacity:0;animation:fadeUp .8s ease .9s forwards}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-/* ============ КНОПКА МЕНЮ ============ */
 .fab{
   position:fixed;z-index:80;width:52px;height:52px;border-radius:50%;
   background:rgba(246,241,232,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
@@ -113,8 +109,6 @@ section{padding:clamp(4.5rem,10vw,8rem) 0;position:relative}
   top:calc(1rem + env(safe-area-inset-top));
   right:calc(1rem + env(safe-area-inset-right));
 }
-
-/* ============ КНОПКА МУЗЫКИ ============ */
 #musicBtn{
   bottom:calc(1rem + env(safe-area-inset-bottom));
   right:calc(1rem + env(safe-area-inset-right));
@@ -134,7 +128,6 @@ section{padding:clamp(4.5rem,10vw,8rem) 0;position:relative}
 .music-waves i:nth-child(3){height:10px;animation-delay:.4s}
 @keyframes wv{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
 
-/* ============ МЕНЮ ============ */
 #menu{
   position:fixed;inset:0;z-index:90;background:var(--bg);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -157,7 +150,6 @@ section{padding:clamp(4.5rem,10vw,8rem) 0;position:relative}
   padding:0 1.5rem;text-align:center}
 #menu.open .menu-date{opacity:1}
 
-/* ============ HERO: открытка ============ */
 .hero{
   min-height:100vh;min-height:100svh;
   position:relative;overflow:hidden;
@@ -187,7 +179,6 @@ section{padding:clamp(4.5rem,10vw,8rem) 0;position:relative}
 }
 @keyframes sheenMove{0%{transform:translateX(-18%)}55%{transform:translateX(18%)}100%{transform:translateX(-18%)}}
 
-/* бант — уменьшенный, анимация сохранена */
 .bow{
   position:absolute;top:calc(env(safe-area-inset-top) + 2.5vh);left:50%;
   width:clamp(104px,15vw,160px);
@@ -204,7 +195,6 @@ body.go .bow{opacity:1;transition:opacity 1.1s ease .35s}
   50%{transform:translateX(-38%) rotate(8.5deg)}
 }
 
-/* «18» — водяной знак */
 .big-age{
   position:absolute;left:50%;top:44%;
   transform:translate(-50%,-50%) scale(.96);
@@ -217,7 +207,6 @@ body.go .bow{opacity:1;transition:opacity 1.1s ease .35s}
 }
 body.go .big-age{opacity:1;transform:translate(-50%,-50%) scale(1)}
 
-/* имя — горизонтально */
 .hero-stage{position:relative;z-index:4;text-align:center;padding:0 1.2rem;transform:translateY(6vh)}
 .hero-name{
   font-family:var(--serif);font-style:italic;font-weight:500;
@@ -250,7 +239,6 @@ body.go .hero-meta{opacity:1;transform:none}
 body.go .scroll-hint{opacity:.85}
 @keyframes hintFloat{0%,100%{margin-bottom:0}50%{margin-bottom:8px}}
 
-/* ============ ТАЙМЕР ============ */
 .countdown{display:flex;align-items:center;justify-content:center;gap:clamp(.8rem,3vw,1.8rem);margin:2.8rem auto 0}
 .cd-cell{display:flex;flex-direction:column;align-items:center;gap:.35rem;min-width:58px}
 .cd-num{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,6vw,3.6rem);line-height:1}
@@ -260,7 +248,6 @@ body.go .scroll-hint{opacity:.85}
 .cd-sep{width:1px;height:48px;background:var(--line)}
 .hero-done{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--accent-dk);margin-top:2.8rem}
 
-/* ============ ПРИГЛАШЕНИЕ ============ */
 #greeting p{max-width:600px;margin:0 auto 1.4rem;text-align:center;font-size:1.08rem;color:var(--ink-soft)}
 #greeting .sign{
   font-family:var(--hand);font-weight:500;
@@ -268,7 +255,6 @@ body.go .scroll-hint{opacity:.85}
   color:var(--accent-dk);text-align:center;margin-top:2.4rem;
 }
 
-/* ============ ПРОГРАММА ДНЯ ============ */
 .tl{position:relative;max-width:860px;margin:0 auto;padding:1rem 0}
 .tl::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;
   background:var(--line);transform:translateX(-.5px)}
@@ -288,7 +274,6 @@ body.go .scroll-hint{opacity:.85}
 .tl-item:nth-child(odd) .tl-card p{margin-left:auto}
 .tl-item:nth-child(even) .tl-card{grid-column:3;grid-row:1}
 
-/* ============ ЛОКАЦИЯ ============ */
 .loc-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(1.2rem,3vw,2rem);align-items:stretch}
 .map-frame{background:var(--paper);border:1px solid var(--line);
   padding:clamp(.6rem,2vw,1.4rem);position:relative}
@@ -315,7 +300,6 @@ body.go .scroll-hint{opacity:.85}
 .pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.2s ease-out infinite}
 @keyframes pulse{0%{transform:scale(1);opacity:.55}80%{transform:scale(2.6);opacity:0}100%{opacity:0}}
 
-/* карточка с кнопкой «Фотографии коттеджа» */
 .photos-card{
   background:var(--paper);border:1px solid var(--line);
   padding:clamp(.6rem,2vw,1.4rem);display:flex;
@@ -342,7 +326,6 @@ body.go .scroll-hint{opacity:.85}
 }
 .map-address .btn{margin-top:1.4rem}
 
-/* ============ ПАЛИТРА ============ */
 .swatches{display:flex;justify-content:center;gap:clamp(1rem,4vw,2.2rem);
   flex-wrap:wrap;margin-top:3rem}
 .swatch{display:flex;flex-direction:column;align-items:center;gap:.55rem;
@@ -359,7 +342,6 @@ body.go .scroll-hint{opacity:.85}
 .dress-note{text-align:center;margin-top:2.6rem;font-size:.72rem;
   letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft)}
 
-/* ============ АНКЕТА ============ */
 #rsvp .form-shell{
   max-width:680px;margin:0 auto;background:var(--paper);
   border:1px solid var(--line);padding:clamp(1.8rem,5vw,3.4rem);position:relative;
@@ -409,7 +391,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
 }
 .link-btn:hover{opacity:.65}
 
-/* ============ ФИНАЛ ============ */
 #finale{background:var(--dark);color:var(--bg);text-align:center;
   padding:clamp(5rem,12vw,9rem) 0}
 #finale .fin-title{font-family:var(--serif);font-style:italic;font-weight:500;
@@ -425,7 +406,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   text-transform:uppercase;color:rgba(246,241,232,.45);line-height:2.1;padding:0 1rem}
 #finale .fin-note a{color:rgba(246,241,232,.8);border-bottom:1px solid rgba(246,241,232,.35);padding-bottom:.2em}
 
-/* ============ ТОСТ ============ */
 #toast{
   position:fixed;bottom:calc(2rem + env(safe-area-inset-bottom));
   left:50%;transform:translate(-50%,20px);z-index:99;
@@ -438,7 +418,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
 #toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
 #toast .ph{color:#D9B98C;font-size:1.1em}
 
-/* ============ АДАПТИВ ============ */
 @media (max-width:820px){
   .loc-grid{grid-template-columns:1fr}
   .hero-stage{transform:translateY(4vh)}
@@ -460,7 +439,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
 </head>
 <body>
 
-<!-- ПРЕЛОАДЕР -->
 <div id="preloader" aria-hidden="true">
   <svg viewBox="0 0 120 84">
     <circle class="ring r1" cx="45" cy="42" r="26"/>
@@ -469,17 +447,14 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   <div class="mono">18</div>
 </div>
 
-<!-- Кнопка меню -->
 <button class="fab" id="menuBtn" aria-label="Открыть меню"><i class="ph ph-list"></i></button>
 
-<!-- Кнопка музыки -->
 <button class="fab" id="musicBtn" aria-label="Включить музыку" aria-pressed="false">
   <i class="ph ph-speaker-high"></i>
   <i class="phl ph-speaker-slash"></i>
   <span class="music-waves" aria-hidden="true"><i></i><i></i><i></i></span>
 </button>
 
-<!-- Меню -->
 <div id="menu" aria-hidden="true">
   <nav>
     <a href="#greeting" style="transition-delay:.05s"><s>I</s>Приглашение</a>
@@ -491,7 +466,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   <div class="menu-date">16 · 01 · 2027 — день рождения Елизаветы</div>
 </div>
 
-<!-- ================= HERO ================= -->
 <header class="hero" id="top">
   <div class="silk-a"></div>
   <div class="silk-b"></div>
@@ -541,7 +515,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   <div class="scroll-hint" aria-hidden="true"><i class="ph ph-caret-down"></i></div>
 </header>
 
-<!-- ================= I. ПРИГЛАШЕНИЕ ================= -->
 <section id="greeting">
   <div class="wrap">
     <p class="sec-label" data-reveal>I · Приглашение</p>
@@ -567,7 +540,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   </div>
 </section>
 
-<!-- ================= II. ПРОГРАММА ДНЯ ================= -->
 <section id="timeline" class="section-alt">
   <div class="wrap">
     <p class="sec-label" data-reveal>II · Программа дня</p>
@@ -608,7 +580,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   </div>
 </section>
 
-<!-- ================= III. ЛОКАЦИЯ ================= -->
 <section id="location">
   <div class="wrap">
     <p class="sec-label" data-reveal>III · Локация</p>
@@ -616,7 +587,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
 
     <div class="loc-grid" data-reveal>
 
-      <!-- Схема проезда в стиле Яндекс Карт -->
       <div class="map-frame">
         <div class="map-corner">
           <span>Вологодская обл. · Вытегорский округ</span>
@@ -629,19 +599,16 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
           <rect x="22" y="22" width="796" height="516" fill="none" stroke="#E6DCCB"/>
           <text x="782" y="60" text-anchor="end">СХЕМА ПРОЕЗДА</text>
 
-          <!-- зелёные зоны -->
           <path d="M 470 22 L 818 22 L 818 150 C 760 168, 706 138, 654 148 C 594 158, 566 118, 524 108 C 494 100, 480 56, 470 22 Z" fill="#D6DCC8" opacity=".85"/>
           <path d="M 22 292 C 92 276, 126 320, 114 372 C 102 428, 58 468, 22 478 Z" fill="#D6DCC8" opacity=".85"/>
           <path d="M 22 538 L 300 538 C 260 522, 200 516, 150 524 C 100 530, 50 534, 22 538 Z" fill="#D6DCC8" opacity=".7"/>
 
-          <!-- шоссе А-119 -->
           <path d="M 22 505 L 818 505" stroke="#EDE4D0" stroke-width="18" fill="none"/>
           <path d="M 22 505 L 818 505" stroke="#FBF8F1" stroke-width="12" fill="none"/>
           <rect x="58" y="494" width="54" height="22" rx="4" fill="#84603C"/>
           <text x="85" y="509" text-anchor="middle" font-size="11" letter-spacing="1" fill="#FBF8F1">А-119</text>
           <text x="688" y="486" font-size="11" letter-spacing="2">БЕЛЫЙ РУЧЕЙ</text>
 
-          <!-- улицы -->
           <g stroke="#FBF8F1" stroke-width="9" fill="none" stroke-linecap="round">
             <path d="M 22 420 C 200 414, 420 420, 610 428 C 662 430, 704 438, 734 448"/>
             <path d="M 165 130 L 165 418"/>
@@ -655,7 +622,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
             <path d="M 800 300 C 814 340, 824 380, 830 420"/>
           </g>
 
-          <!-- подписи улиц -->
           <text x="120" y="408" font-size="10" letter-spacing="2" fill="#A99C82">УЛ. ЮНОСТИ</text>
           <text class="street-v" transform="translate(152 300) rotate(-90)" text-anchor="middle">ДЕТСКАЯ УЛ.</text>
           <text class="street-v" transform="translate(316 275) rotate(-90)" text-anchor="middle" fill="#84603C">ЦВЕТОЧНАЯ УЛ.</text>
@@ -665,7 +631,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
           <text class="street-v" transform="translate(700 345) rotate(-52)" text-anchor="middle">БОРОВАЯ УЛ.</text>
           <text class="street-v" transform="translate(792 368) rotate(-58)" text-anchor="middle">ПЕСЧАНЫЙ ПЕР.</text>
 
-          <!-- дома -->
           <g fill="#E6DEC9">
             <rect x="338" y="112" width="15" height="20"/><rect x="338" y="142" width="15" height="20"/>
             <rect x="338" y="196" width="15" height="20"/><rect x="338" y="230" width="15" height="20"/>
@@ -685,7 +650,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
             <rect x="470" y="330" width="15" height="20"/><rect x="490" y="390" width="15" height="20"/>
           </g>
 
-          <!-- номера домов вдоль Цветочной -->
           <g class="house-num">
             <text x="358" y="127">16</text><text x="358" y="157">15</text>
             <text x="358" y="211">13</text><text x="358" y="245">12</text>
@@ -701,18 +665,15 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
             <text x="734" y="193">9</text>
           </g>
 
-          <!-- магазин -->
           <circle cx="614" cy="440" r="9" fill="#97A08C"/>
           <circle cx="614" cy="440" r="4" fill="#FBF8F1"/>
           <text x="630" y="444" font-size="9.5" letter-spacing="2">ПРОДУКТЫ</text>
 
-          <!-- ПУТЬ ДО ДОМА: пунктир от шоссе А-119 вверх по Цветочной -->
           <circle cx="330" cy="496" r="5" fill="#A67C52"/>
           <path class="map-route" d="M 330 492 C 340 440, 320 380, 330 312"/>
           <path class="map-route" d="M 330 296 C 340 244, 320 184, 330 140"/>
           <text x="344" y="486" font-size="9" letter-spacing="2" fill="#A67C52">ОТ А-119</text>
 
-          <!-- булавка: Цветочная, 16 -->
           <g>
             <circle class="pulse" cx="330" cy="122" r="11" fill="none" stroke="#B0563E" stroke-width="1.6"/>
             <path d="M330 66 c-12 0 -21 9 -21 21 c0 16 21 35 21 35 s21 -19 21 -35 c0 -12 -9 -21 -21 -21 z" fill="#B0563E"/>
@@ -721,7 +682,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
             <text x="368" y="79" font-size="11" letter-spacing="2" fill="#3B342A">ЦВЕТОЧНАЯ УЛ., 16</text>
           </g>
 
-          <!-- компас -->
           <g transform="translate(64,80)">
             <circle r="20" fill="none" stroke="#D9CDB9"/>
             <path d="M0,-12 L4,6 L0,3 L-4,6 Z" fill="#3B342A"/>
@@ -730,7 +690,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
         </svg>
       </div>
 
-      <!-- Карточка с кнопкой на Яндекс Диск -->
       <div class="photos-card">
         <div class="photos-inner">
           <span class="photos-ic"><i class="phl ph-images"></i></span>
@@ -757,7 +716,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   </div>
 </section>
 
-<!-- ================= IV. ПАЛИТРА ================= -->
 <section id="palette" class="section-alt">
   <div class="wrap">
     <p class="sec-label" data-reveal>IV · Палитра</p>
@@ -784,7 +742,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   </div>
 </section>
 
-<!-- ================= V. АНКЕТА ================= -->
 <section id="rsvp">
   <div class="wrap">
     <p class="sec-label" data-reveal>V · Анкета гостя</p>
@@ -863,7 +820,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   </div>
 </section>
 
-<!-- ================= ФИНАЛ ================= -->
 <footer id="finale">
   <div class="wrap">
     <div class="orn" data-reveal><i></i></div>
@@ -880,11 +836,9 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   </div>
 </footer>
 
-<!-- Тост -->
 <div id="toast" role="status"><i class="ph ph-check"></i><span id="toastText"></span></div>
 
 <script>
-/* ============ 0. УТИЛИТЫ ============ */
 const $  = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 
@@ -896,11 +850,10 @@ function showToast(msg){
   toastTimer = setTimeout(() => $('#toast').classList.remove('show'), 2800);
 }
 
-/* Дата и координаты праздника */
 const PARTY = new Date('2027-01-16T18:30:00+03:00');
-const POINT = { lat: 60.926773, lon: 36.824908 };   // Цветочная ул., 16 — п. Депо
+const POINT = { lat: 60.926773, lon: 36.824908 };
 
-/* ============ 1. ПРЕЛОАДЕР + имя по буквам ============ */
+/* прелоадер + имя по буквам */
  $$('[data-split]').forEach(el => {
   el.innerHTML = [...el.textContent].map(ch =>
     `<span class="l">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('');
@@ -916,7 +869,7 @@ window.addEventListener('load', () => {
 });
 setTimeout(() => { $('#preloader').classList.add('hide'); document.body.classList.add('go'); }, 4500);
 
-/* ============ 2. ТАЙМЕР ============ */
+/* таймер */
 function tick(){
   const cd = $('#countdown');
   if (!cd) return;
@@ -941,13 +894,13 @@ function tick(){
 }
 tick();
 
-/* ============ 3. ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ ============ */
+/* появление при скролле */
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
 }), { threshold: .12 });
  $$('[data-reveal]').forEach(el => io.observe(el));
 
-/* ============ 4. МЕНЮ ============ */
+/* меню */
 const menu = $('#menu'), menuBtn = $('#menuBtn');
 function toggleMenu(force){
   const open = force !== undefined ? force : !menu.classList.contains('open');
@@ -968,12 +921,12 @@ const spy = new IntersectionObserver(es => es.forEach(e => {
 ['greeting','timeline','location','palette','rsvp']
   .forEach(id => spy.observe(document.getElementById(id)));
 
-/* ============ 5. КАЛЕНДАРЬ: .ics ============ */
+/* календарь */
 function downloadICS(){
   const pad = n => String(n).padStart(2,'0');
   const fmt = d => d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+
                    'T'+pad(d.getHours())+pad(d.getMinutes())+'00';
-  const start = PARTY, end = new Date(PARTY.getTime() + 12*36e5); // до ~06:30 утра
+  const start = PARTY, end = new Date(PARTY.getTime() + 12*36e5);
   const ics = [
     'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//birthday//invite//RU','BEGIN:VEVENT',
     'UID:' + Date.now() + '@birthday-invite',
@@ -995,7 +948,7 @@ function downloadICS(){
 }
  $('#icsBtn2').addEventListener('click', downloadICS);
 
-/* ============ 6. МАРШРУТ: Яндекс Карты (приложение → веб) ============ */
+/* маршрут */
  $('#routeBtn').addEventListener('click', function(e){
   e.preventDefault();
   const web = this.href;
@@ -1010,7 +963,7 @@ function downloadICS(){
   }, 1200);
 });
 
-/* ============ 7. ПАЛИТРА: копирование ============ */
+/* палитра */
  $$('.swatch').forEach(sw => sw.addEventListener('click', () => {
   const hex = sw.dataset.hex, name = sw.dataset.name;
   const done = () => showToast(name + ' · ' + hex + ' скопирован');
@@ -1018,7 +971,7 @@ function downloadICS(){
   else done();
 }));
 
-/* ============ 7а. МУЗЫКА (генеративная, без файлов) ============ */
+/* ============ ГЕНЕРАТИВНАЯ МУЗЫКА (без файлов) ============ */
 const musicBtn = $('#musicBtn');
 
 const Music = (() => {
@@ -1084,7 +1037,7 @@ musicBtn.addEventListener('click', () => {
   showToast(on ? 'Музыка включена' : 'Музыка выключена');
 });
 
-/* ============ 8. АНКЕТА: отправка ответов в Telegram ============ */
+/* ============ АНКЕТА: Telegram ============ */
 const RSVP_TARGET = {
   telegram: { token: '9137242163:AAHpdw2k_z2VzsFaiUNXZrZr_vu0JRwI0bo', chatId: '1086521894' },
   webhook:  ''
@@ -1172,7 +1125,6 @@ function renderThanks(d){
   form.style.display = 'block';
 });
 
-/* Восстановление сохранённого ответа */
 try {
   const saved = JSON.parse(localStorage.getItem('rsvp-liza18-v5'));
   if (saved && saved.name){
