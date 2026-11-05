@@ -478,7 +478,6 @@ textarea.f-input{font-family:var(--sans);font-size:1rem;resize:vertical;min-heig
   <i class="phl ph-speaker-slash"></i>
   <span class="music-waves" aria-hidden="true"><i></i><i></i><i></i></span>
 </button>
-<audio id="bgMusic" src="music.mp3" loop preload="none" playsinline></audio>
 
 <!-- Меню -->
 <div id="menu" aria-hidden="true">
@@ -1019,37 +1018,70 @@ function downloadICS(){
   else done();
 }));
 
-/* ============ 7а. МУЗЫКА ============ */
-const musicBtn = $('#musicBtn'), bgMusic = $('#bgMusic');
+/* ============ 7а. МУЗЫКА (генеративная, без файлов) ============ */
+const musicBtn = $('#musicBtn');
 
-/* если файл music.mp3 отсутствует — сообщим понятно, а не молча */
-bgMusic.addEventListener('error', () => {
-  console.warn('Не найден файл music.mp3 в корне репозитория');
-});
+const Music = (() => {
+  let ctx = null, master = null, playing = false, noteTimer = null, chordIdx = 0;
+
+  const SCALE  = [220, 261.63, 293.66, 329.63, 392, 440, 523.25, 587.33, 659.25];
+  const PEDALS = [110, 87.31, 130.81, 98];
+
+  function ensureCtx(){
+    if (ctx) return;
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    master = ctx.createGain(); master.gain.value = 0;
+    const delay = ctx.createDelay(2); delay.delayTime.value = .48;
+    const fb = ctx.createGain(); fb.gain.value = .38;
+    const wet = ctx.createGain(); wet.gain.value = .35;
+    master.connect(ctx.destination);
+    master.connect(delay); delay.connect(fb); fb.connect(delay);
+    delay.connect(wet); wet.connect(ctx.destination);
+  }
+
+  function note(freq, dur = 3, vol = .16){
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, ctx.currentTime);
+    g.gain.linearRampToValueAtTime(vol, ctx.currentTime + .06);
+    g.gain.exponentialRampToValueAtTime(.0001, ctx.currentTime + dur);
+    o.connect(g); g.connect(master);
+    o.start(); o.stop(ctx.currentTime + dur + .1);
+  }
+
+  function schedule(){
+    noteTimer = setTimeout(() => {
+      if (!playing) return;
+      if (Math.random() < .12){
+        note(PEDALS[chordIdx % PEDALS.length], 7, .07);
+        chordIdx++;
+      }
+      note(SCALE[Math.random()*SCALE.length|0], 2.6 + Math.random()*1.6, .1 + Math.random()*.07);
+      if (Math.random() < .3)
+        note(SCALE[3 + (Math.random()*5|0)], 3, .06);
+      schedule();
+    }, 1300 + Math.random()*1100);
+  }
+
+  return {
+    toggle(){
+      ensureCtx();
+      if (ctx.state === 'suspended') ctx.resume();
+      playing = !playing;
+      master.gain.cancelScheduledValues(ctx.currentTime);
+      master.gain.linearRampToValueAtTime(playing ? .55 : 0, ctx.currentTime + (playing ? 1.2 : .6));
+      if (playing){ schedule(); note(PEDALS[0], 7, .07); }
+      else clearTimeout(noteTimer);
+      return playing;
+    }
+  };
+})();
 
 musicBtn.addEventListener('click', () => {
-  if (bgMusic.paused){
-    bgMusic.volume = 0;
-    bgMusic.play().then(() => {
-      const t0 = performance.now(), DUR = 1500;
-      (function fade(t){
-        const k = Math.min(1, (t - t0) / DUR);
-        bgMusic.volume = k * .55;
-        if (k < 1) requestAnimationFrame(fade);
-      })(t0);
-      musicBtn.classList.add('on');
-      musicBtn.setAttribute('aria-pressed','true');
-      showToast('Музыка включена');
-    }).catch(() => {
-      musicBtn.classList.remove('on');
-      showToast('Не удалось включить музыку');
-    });
-  } else {
-    bgMusic.pause();
-    musicBtn.classList.remove('on');
-    musicBtn.setAttribute('aria-pressed','false');
-    showToast('Музыка выключена');
-  }
+  const on = Music.toggle();
+  musicBtn.classList.toggle('on', on);
+  musicBtn.setAttribute('aria-pressed', String(on));
+  showToast(on ? 'Музыка включена' : 'Музыка выключена');
 });
 
 /* ============ 8. АНКЕТА: отправка ответов в Telegram ============ */
